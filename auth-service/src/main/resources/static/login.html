@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>E-Commerce - Login</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f3f6;
+        }
+
+        .container {
+            width: 380px;
+            margin: 100px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2874f0;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1257c7;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: #2874f0;
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Login</h2>
+
+    <form id="loginForm">
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter your password"
+            required
+        >
+
+        <button type="submit">
+            Login
+        </button>
+
+    </form>
+
+
+    <div
+        class="message"
+        id="message">
+    </div>
+
+
+    <div class="register-link">
+
+        Don't have an account?
+
+        <a href="register.html">
+            Register
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+document
+.getElementById("loginForm")
+.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+
+    const email =
+        document.getElementById("email").value;
+
+    const password =
+        document.getElementById("password").value;
+
+
+    try {
+
+        const response = await fetch(
+
+            "/auth/login?email="
+            + encodeURIComponent(email)
+            + "&password="
+            + encodeURIComponent(password),
+
+            {
+                method: "POST"
+            }
+
+        );
+
+
+        const result =
+            await response.text();
+
+
+        document
+        .getElementById("message")
+        .innerText = result;
+
+
+        if (result === "Login successful") {
+
+            setTimeout(function() {
+
+                // Change this later to your product page
+                window.location.href =
+                    "product.html";
+
+            }, 1000);
+
+        }
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        document
+        .getElementById("message")
+        .innerText =
+            "Unable to connect to server";
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>
