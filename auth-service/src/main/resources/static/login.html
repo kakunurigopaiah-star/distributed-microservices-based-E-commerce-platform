@@ -25,6 +25,7 @@
 
         .container {
             width: 380px;
+            max-width: calc(100% - 32px);
             margin: 100px auto;
             background: white;
             padding: 30px;
@@ -92,6 +93,8 @@
         <input
             type="email"
             id="email"
+            aria-label="Email address"
+            autocomplete="email"
             placeholder="Enter your email"
             required
         >
@@ -99,6 +102,8 @@
         <input
             type="password"
             id="password"
+            aria-label="Password"
+            autocomplete="current-password"
             placeholder="Enter your password"
             required
         >
@@ -131,6 +136,8 @@
 
 <script>
 
+const API_BASE_URL = "http://localhost:8080";
+
 document
 .getElementById("loginForm")
 .addEventListener("submit", async function(event) {
@@ -149,7 +156,7 @@ document
 
         const response = await fetch(
 
-            "/auth/login?email="
+            API_BASE_URL + "/auth/login?email="
             + encodeURIComponent(email)
             + "&password="
             + encodeURIComponent(password),
@@ -169,18 +176,6 @@ document
         .getElementById("message")
         .innerText = result;
 
-
-        if (result === "Login successful") {
-
-            setTimeout(function() {
-
-                // Change this later to your product page
-                window.location.href =
-                    "product.html";
-
-            }, 1000);
-
-        }
 
     }
 

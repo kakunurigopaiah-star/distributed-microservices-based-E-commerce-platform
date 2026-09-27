@@ -1,0 +1,2 @@
+# Local preview task references the developer's installed JDK path.
+.vscode/tasks.json
