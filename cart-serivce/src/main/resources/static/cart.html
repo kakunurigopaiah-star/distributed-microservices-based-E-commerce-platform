@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#163b35">
+    <title>Shopping Cart</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: Georgia, "Times New Roman", serif;
+            color: #183a34;
+            background: #f4f5ef;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #f4f5ef 0%, #e5eee8 100%);
+        }
+
+        header {
+            padding: 20px max(24px, calc((100vw - 1080px) / 2));
+            border-bottom: 1px solid #cad8d0;
+            font: 700 20px/1.4 Arial, sans-serif;
+        }
+
+        main {
+            width: min(100% - 40px, 1080px);
+            margin: 0 auto;
+            padding: 72px 0;
+        }
+
+        .eyebrow {
+            margin: 0 0 12px;
+            color: #a34d2c;
+            font: 700 12px/1.4 Arial, sans-serif;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(38px, 7vw, 72px);
+            line-height: 0.98;
+        }
+
+        .status {
+            max-width: 560px;
+            margin-top: 36px;
+            padding: 22px 0;
+            border-top: 1px solid #9db7a9;
+            color: #425d55;
+            font: 16px/1.6 Arial, sans-serif;
+        }
+
+        a {
+            color: #a34d2c;
+            font: 700 15px/1.5 Arial, sans-serif;
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 18px 20px; }
+            main { padding-top: 52px; }
+        }
+    </style>
+</head>
+<body>
+    <header>E-Commerce</header>
+    <main>
+        <p class="eyebrow">Cart service</p>
+        <h1>Shopping cart</h1>
+        <p class="status" role="status">Cart items are unavailable because the cart API is not implemented yet.</p>
+        <a href="http://127.0.0.1:8091/product.html">Continue to products</a>
+    </main>
+</body>
+</html>
